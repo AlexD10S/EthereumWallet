@@ -1,5 +1,6 @@
 # Ethereum Wallet
-Code for learning how to work with Web3J, the Java library to interact with the Ethereum Network. 
+Code for learning how to work with Web3J, the Java library to interact with the Ethereum Network.
+Currently in the Rinkeby testnet. Please do not send real Ether or you will lose your money.
 
 List of features:
 
