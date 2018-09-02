@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.alexd10s.ethereumwallet">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.read_external_storage" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,17 +16,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".activities.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.WalletActivity" />
-        <activity android:name=".Activities.GenerateWalletActivity" />
-        <activity android:name=".Activities.SendActivity" />
-        <activity android:name=".Activities.ReceiveActivity"></activity>
+        <activity
+            android:name=".utils.BarcodeCaptureActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.WalletActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.GenerateWalletActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.SendActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.ReceiveActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

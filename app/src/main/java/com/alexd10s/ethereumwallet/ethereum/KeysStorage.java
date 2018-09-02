@@ -1,4 +1,4 @@
-package com.alexd10s.ethereumwallet;
+package com.alexd10s.ethereumwallet.ethereum;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -16,12 +16,12 @@ import static android.content.Context.MODE_PRIVATE;
  * Created by alex on 24/08/2018.
  */
 
-public class Cryptography {
+public class KeysStorage {
 
     private Context cntx;
     private final String MY_PREFS_NAME = "ETH_KEYS";
 
-    public Cryptography(Context context){
+    public KeysStorage(Context context){
         cntx = context;
     }
 

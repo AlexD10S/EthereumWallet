@@ -1,4 +1,4 @@
-package com.alexd10s.ethereumwallet.Activities;
+package com.alexd10s.ethereumwallet.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +23,7 @@ public class WalletActivity extends AppCompatActivity {
 
     private void setupButtons(){
         generateWallet = (Button) findViewById(R.id.generate_wallet);
-        addKeys = (Button) findViewById(R.id.keys_ether);
+        addKeys = (Button) findViewById(R.id.add_wallet);
 
         generateWallet.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.alexd10s.ethereumwallet.Activities.SendActivity"
+    tools:context="com.alexd10s.ethereumwallet.activities.SendActivity"
     android:background="@color/lightBlue">
 
 
@@ -25,9 +25,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="Send Ethers"
             android:textSize="25sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_balance_send"
+            android:layout_marginTop="5dp"
+            android:text="Balance: "
+            android:textSize="14sp"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"
             android:layout_gravity="center"/>
@@ -48,7 +58,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/account_input_send_text_first"
+                android:id="@+id/account_input_send"
                 android:layout_width="280dp"
                 android:layout_height="30dp"
                 android:inputType="text"
@@ -68,7 +78,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/amount_title_send_first"
+            android:id="@+id/amount_title_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -78,7 +88,7 @@
             android:textColor="@color/colorPrimary"/>
 
         <EditText
-            android:id="@+id/amount_input_send_first"
+            android:id="@+id/amount_input_send"
             android:layout_width="match_parent"
             android:layout_height="@dimen/input_height"
             android:layout_marginTop="5dp"

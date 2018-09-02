@@ -1,9 +1,9 @@
-package com.alexd10s.ethereumwallet.Ethereum;
+package com.alexd10s.ethereumwallet.ethereum;
 
-import android.provider.SyncStateContract;
 import android.util.Pair;
 
-import com.alexd10s.ethereumwallet.Constants;
+import com.alexd10s.ethereumwallet.utils.Constants;
+import com.alexd10s.ethereumwallet.interfaces.ApiCallback;
 
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.ECKeyPair;
@@ -60,7 +60,7 @@ public class EthereumHandler {
         return key;
     }
 
-    public BigInteger getBalance (String addressFrom){
+    public void getBalance (String addressFrom, ApiCallback callback){
 
         Web3j web3j = Web3jFactory.build(new HttpService(Constants.urlEth));
         try {
@@ -71,20 +71,21 @@ public class EthereumHandler {
 
 
             BigInteger wei = ethGetBalance1.getBalance();
-            double eth1 = wei.doubleValue() / Constants.weiToEth.doubleValue();
+            double ethInDouble = wei.doubleValue() / Constants.weiToEth.doubleValue();
+
+            callback.OnSuccess(String.valueOf(ethInDouble));
 
 
 
-            return wei;
         }
         catch (Exception e){
             String ex = e.getMessage();
-            return new BigInteger("-1");
+            callback.OnFailure(ex);
         }
 
     }
 
-    public String sendTransaction(String addressTo,String addressFrom, String value){
+    public void sendTransaction(String addressTo, String addressFrom, String value, ApiCallback callback){
 
         String etherReceipt = "";
         try{
@@ -92,24 +93,43 @@ public class EthereumHandler {
             Web3j web3j = Web3jFactory.build(new HttpService(Constants.urlEth));
 
 
-            String lastAccount = addressTo;
             Credentials credentials = Credentials.create(addressFrom);
-            // get creadentials for the first account having some ether
-
-
-            //BigInteger transferFunds =   new BigInteger(value);
 
             TransactionReceipt transactionReceipt = Transfer.sendFunds(
-                    web3j, credentials, lastAccount,
+                    web3j, credentials, addressTo,
                     new BigDecimal(value), Convert.Unit.ETHER).sendAsync().get();
             etherReceipt = transactionReceipt.getTransactionHash();
 
+            callback.OnSuccess(etherReceipt);
+
         } catch (Exception e) {
             String a = e.getMessage();
-            etherReceipt = "Exception:"+ a;
+            callback.OnFailure("Exception:"+ a);
         }
 
-        return etherReceipt;
 
+    }
+
+    public void buyEthers(String myAddress, ApiCallback callback){
+        String etherReceipt = "";
+        try{
+
+            Web3j web3j = Web3jFactory.build(new HttpService(Constants.urlEth));
+
+
+            Credentials credentials = Credentials.create(Constants.bankPrivateKey);
+
+
+            TransactionReceipt transactionReceipt = Transfer.sendFunds(
+                    web3j, credentials, myAddress,
+                    new BigDecimal(3.0), Convert.Unit.ETHER).sendAsync().get();
+            etherReceipt = transactionReceipt.getTransactionHash();
+
+            callback.OnSuccess("Ok");
+
+        } catch (Exception e) {
+            String a = e.getMessage();
+            callback.OnFailure("Exception:"+ a);
+        }
     }
 }
