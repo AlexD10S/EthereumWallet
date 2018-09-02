@@ -13,6 +13,6 @@ List of features:
 
 App:
 
-![Screenshoot 1](https://github.com/AlexD10S/EthereumWallet/screen1.png "Screenshoot 1")
+![Screenshoot 1](https://github.com/AlexD10S/EthereumWallet/blob/master/screen1.jpg "Screenshoot 1")
 
-![Screenshoot 2](https://github.com/AlexD10S/EthereumWallet/screen2.png "Screenshoot 2")
+![Screenshoot 2](https://github.com/AlexD10S/EthereumWallet/blob/master/screen2.jpg "Screenshoot 2")
